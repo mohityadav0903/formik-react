@@ -7,9 +7,10 @@ import * as Yup from "yup";
 
 const validationSchema = Yup.object({
     name: Yup.string("Enter a name").required("Name is required"),
-    email: Yup.string("Enter your email").email("Enter a valid email").required("Email is required"),
-    password: Yup.string("").min(8, "Password must contain at least 8 characters").required("Enter your password"),
-    confirmPassword: Yup.string("Enter your password").required("Confirm your password").oneOf([Yup.ref("password")], "Password does not match")
+    address : Yup.string("Enter your address").required("Address is required"),
+    country : Yup.string("Select your country").required("Country is required"),
+    gender : Yup.string().required("Gender is required"),
+    hobbies : Yup.array().required("atleast one hobby is required"),
 });
 
 
@@ -28,7 +29,7 @@ const styles = theme => ({
 
 const InputForm = (props) => {
     const { classes } = props;
-    const values = { name: "", email: "", password: "", confirmPassword: "" };
+    const values = {name:"", address :"",country :"India", gender :"male", hobbies :[]};
     
     return (
   <React.Fragment>
